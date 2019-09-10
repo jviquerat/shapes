@@ -157,7 +157,6 @@ class Shape:
         # Center set of points
         if (centering):
             center            = np.mean(self.curve_pts, axis=0)
-            print(center)
             self.curve_pts   -= center
             self.control_pts -= center[:1]
 
