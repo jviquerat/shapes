@@ -13,12 +13,12 @@ shape_h        = 1.0
 domain_h       = 1.0
 
 # To generate shapes with homogeneous curvatures
-#radius         = [0.5]
-#edgy           = [0.5]
+radius         = [0.5]
+edgy           = [1.0]
 
 # To generate shapes with random curvatures
-radius         = np.random.uniform(low=0.0, high=1.0, size=n_pts)
-edgy           = np.random.uniform(low=0.0, high=1.0, size=n_pts)
+#radius         = np.random.uniform(low=0.0, high=1.0, size=n_pts)
+#edgy           = np.random.uniform(low=0.0, high=1.0, size=n_pts)
 
 # Generate and mesh shape
 shape = Shape(filename,

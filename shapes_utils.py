@@ -129,17 +129,13 @@ class Shape:
             pt_p = control_pts[nxt,:]
 
             # Compute delta vector
-            dist1 = compute_distance(pt_m, pt_c)
-            dist2 = compute_distance(pt_p, pt_c)
-            diff  = pt_p - pt_m
-            diff  = diff/np.linalg.norm(diff)
-            delta[i,:] = diff[:]
+            #diff       = 0.5*([-pt_c[1],pt_c[0]] + diff)#Other option
+            diff         = pt_p - pt_m
+            diff         = diff/np.linalg.norm(diff)
+            delta[crt,:] = diff
 
             # Compute edgy vector
-            delta_b[i,:] = np.array([-delta[crt,1],delta[crt,0]])
-            #delta_b[i,:] = 0.5*(0.5*(pt_m + pt_p) + pt_c)
-            #delta_b[i,:] = center
-            #delta_b[i,:] = delta_b[i,:]/np.linalg.norm(delta_b[i,:])
+            delta_b[crt,:] = 0.5*(pt_m + pt_p)
 
             # Compute radii
             dist         = compute_distance(pt_m, pt_p)
@@ -150,7 +146,7 @@ class Shape:
         for i in range(self.n_control_pts):
             crt  = i
             nxt  = (i+1)%self.n_control_pts
-            pt_c = control_pts[i  ,:]
+            pt_c = control_pts[crt,:]
             pt_p = control_pts[nxt,:]
 
             local_curve = generate_bezier_curve(pt_c,           pt_p,
@@ -217,7 +213,8 @@ class Shape:
                         self.control_pts[:,1],
                         color=colors,
                         s=16,
-                        zorder=2)
+                        zorder=2,
+                        alpha=0.5)
 
         # Plot quadrants
         if (show_quadrants):
@@ -243,7 +240,7 @@ class Shape:
         if (override_name != ''): filename = override_name
 
         plt.savefig(filename,
-                    dpi=200)
+                    dpi=400)
         plt.close(plt.gcf())
         plt.cla()
         trim_white(filename)

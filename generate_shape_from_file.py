@@ -32,7 +32,7 @@ if (not os.path.isfile(filename)):
 # Generate shape
 shape = Shape()
 shape.read_csv(filename)
-shape.generate()
+shape.generate(ccws=False)
 shape.mesh()
-shape.generate_image()
-shape.write_csv()
+shape.generate_image(plot_pts=True)
+#shape.write_csv()
