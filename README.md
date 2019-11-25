@@ -30,4 +30,4 @@ Tools to generate random shapes using Bezier curves (images and meshes), control
 -0.5 0.4 0.5 1.0
 ```
 
-<img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552480-d0c45a80-0f9e-11ea-90b4-811aafc39dcd.png"> <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552486-d326b480-0f9e-11ea-8c05-3e54ae8a3e48.png">
+<img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552480-d0c45a80-0f9e-11ea-90b4-811aafc39dcd.png"> <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552712-357fb500-0f9f-11ea-8008-2277b9cd6a60.png">
