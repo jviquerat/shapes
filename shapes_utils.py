@@ -131,11 +131,9 @@ class Shape:
             # Compute delta vector
             dist1 = compute_distance(pt_m, pt_c)
             dist2 = compute_distance(pt_p, pt_c)
-            diff = pt_p - pt_m
-            #diff = np.array([-pt_c[1],pt_c[0]])
-            diff = diff/np.linalg.norm(diff)
-            delta[i,:] = diff[:] #-0.5*np.dot(diff,pt_c)
-            #delta[i,:] = -np.array([-diff[1],diff[0]])
+            diff  = pt_p - pt_m
+            diff  = diff/np.linalg.norm(diff)
+            delta[i,:] = diff[:]
 
             # Compute edgy vector
             delta_b[i,:] = np.array([-delta[crt,1],delta[crt,0]])
@@ -145,9 +143,7 @@ class Shape:
 
             # Compute radii
             dist         = compute_distance(pt_m, pt_p)
-            #dist         = compute_distance(pt_m, pt_c)
             radii[crt,0] = 0.5*dist*radius[crt]
-            #dist        = compute_distance(pt_c, pt_p)
             radii[crt,1] = 0.5*dist*radius[crt]
 
         # Generate curves
@@ -631,8 +627,8 @@ def generate_bezier_curve(p1,       p2,
         ctrl_p1_edgy = delta_b1
         ctrl_p2_edgy = delta_b2
 
-        control_pts[1,:] = p1 + edgy1*ctrl_p1_base# + (1.0-edgy1)*ctrl_p1_edgy
-        control_pts[2,:] = p2 + edgy2*ctrl_p2_base# + (1.0-edgy2)*ctrl_p2_edgy
+        control_pts[1,:] = p1 + edgy1*ctrl_p1_base + (1.0-edgy1)*ctrl_p1_edgy
+        control_pts[2,:] = p2 + edgy2*ctrl_p2_base + (1.0-edgy2)*ctrl_p2_edgy
 
         # Compute points on the Bezier curve
         curve = sample_bezier_curve(control_pts, n_sampling_pts)
