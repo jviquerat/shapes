@@ -99,53 +99,69 @@ class Shape:
         self.control_pts *= magnify
 
         # Center set of points
+        center = np.mean(self.control_pts, axis=0)
         if (centering):
-            center            = np.mean(self.control_pts, axis=0)
             self.control_pts -= center
 
         # Sort points counter-clockwise
         if (ccws):
-            control_pts, radius, edgy = ccw_sort(self.control_pts,
-                                                 self.radius,
-                                                 self.edgy)
+            control_pts, radius, edgy  = ccw_sort(self.control_pts,
+                                                  self.radius,
+                                                  self.edgy)
         else:
             control_pts = np.array(self.control_pts)
             radius      = np.array(self.radius)
             edgy        = np.array(self.edgy)
 
-        # Create copy of control_pts for further modification
-        augmented_control_pts = control_pts
-
-        # Add first point as last point to close curve
-        augmented_control_pts = np.append(augmented_control_pts,
-                                          np.atleast_2d(augmented_control_pts[0,:]), axis=0)
-
-        # Compute list of cartesian angles from one point to the next
-        vector = np.diff(augmented_control_pts, axis=0)
-        angles = np.arctan2(vector[:,1],vector[:,0])
-        wrap   = lambda angle: (angle >= 0.0)*angle + (angle < 0.0)*(angle+2*np.pi)
-        angles = wrap(angles)
-
-        # Create a second list of angles shifted by one point
-        # to compute an average of the two at each control point.
-        # This helps smoothing the curve around control points
-        angles1 = angles
-        angles2 = np.roll(angles,1)
-
-        angles  = edgy*angles1 + (1.0-edgy)*angles2 + (np.abs(angles2-angles1) > np.pi)*np.pi
-
-        # Add first angle as last angle to close curve
-        angles  = np.append(angles, [angles[0]])
-
-        # Compute curve segments
         local_curves = []
-        for i in range(0,len(augmented_control_pts)-1):
-            local_curve = generate_bezier_curve(augmented_control_pts[i,:],
-                                                augmented_control_pts[i+1,:],
-                                                angles[i],
-                                                angles[i+1],
-                                                self.n_sampling_pts,
-                                                radius[i])
+        delta        = np.zeros([self.n_control_pts,2])
+        radii        = np.zeros([self.n_control_pts,2])
+        delta_b      = np.zeros([self.n_control_pts,2])
+
+        # Compute all informations to generate curves
+        for i in range(self.n_control_pts):
+            # Collect points
+            prv  = (i-1)
+            crt  = i
+            nxt  = (i+1)%self.n_control_pts
+            pt_m = control_pts[prv,:]
+            pt_c = control_pts[crt,:]
+            pt_p = control_pts[nxt,:]
+
+            # Compute delta vector
+            dist1 = compute_distance(pt_m, pt_c)
+            dist2 = compute_distance(pt_p, pt_c)
+            diff = pt_p - pt_m
+            #diff = np.array([-pt_c[1],pt_c[0]])
+            diff = diff/np.linalg.norm(diff)
+            delta[i,:] = diff[:] #-0.5*np.dot(diff,pt_c)
+            #delta[i,:] = -np.array([-diff[1],diff[0]])
+
+            # Compute edgy vector
+            delta_b[i,:] = np.array([-delta[crt,1],delta[crt,0]])
+            #delta_b[i,:] = 0.5*(0.5*(pt_m + pt_p) + pt_c)
+            #delta_b[i,:] = center
+            #delta_b[i,:] = delta_b[i,:]/np.linalg.norm(delta_b[i,:])
+
+            # Compute radii
+            dist         = compute_distance(pt_m, pt_p)
+            radii[crt,0] = 0.707*dist*radius[crt]
+            dist        = compute_distance(pt_c, pt_p)
+            radii[crt,1] = 0.707*dist*radius[crt]
+
+        # Generate curves
+        for i in range(self.n_control_pts):
+            crt  = i
+            nxt  = (i+1)%self.n_control_pts
+            pt_c = control_pts[i  ,:]
+            pt_p = control_pts[nxt,:]
+
+            local_curve = generate_bezier_curve(pt_c,           pt_p,
+                                                delta[crt,:],   delta[nxt,:],
+                                                delta_b[crt,:], delta_b[nxt,:],
+                                                radii[crt,1],   radii[nxt,0],
+                                                edgy[crt],      edgy[nxt],
+                                                self.n_sampling_pts)
             local_curves.append(local_curve)
 
         curve          = np.concatenate([c for c in local_curves])
@@ -158,7 +174,7 @@ class Shape:
         if (centering):
             center            = np.mean(self.curve_pts, axis=0)
             self.curve_pts   -= center
-            self.control_pts -= center[:1]
+            self.control_pts[:,0:2] -= center[0:2]
 
         # Compute area
         self.compute_area()
@@ -477,7 +493,7 @@ class Shape:
 ### Compute distance between two points
 def compute_distance(p1, p2):
 
-    return np.sqrt(np.sum((p2-p1)**2))
+    return np.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)
 
 ### ************************************************
 ### Generate n_pts random points in the unit square
@@ -588,22 +604,34 @@ def sample_bezier_curve(control_pts, n_sampling_pts):
 
 ### ************************************************
 ### Generate Bezier curve between two pts
-def generate_bezier_curve(p1, p2, angle1, angle2, n_sampling_pts, radius):
+def generate_bezier_curve(p1,       p2,
+                          delta1,   delta2,
+                          delta_b1, delta_b2,
+                          radius1,  radius2,
+                          edgy1,    edgy2,
+                          n_sampling_pts):
+
+    # Lambda function to wrap angles
+    #wrap = lambda angle: (angle >= 0.0)*angle + (angle < 0.0)*(angle+2*np.pi)
+
     # Sample the curve if necessary
     if (n_sampling_pts != 0):
-        dist = compute_distance(p1, p2)
-        radius = 0.707*dist*radius
-
         # Create array of control pts for cubic Bezier curve
         # First and last points are given, while the two intermediate
         # points are computed from edge points, angles and radius
         control_pts      = np.zeros((4,2))
         control_pts[0,:] = p1[:]
         control_pts[3,:] = p2[:]
-        control_pts[1,:] = p1 + np.array(
-            [radius*np.cos(angle1), radius*np.sin(angle1)])
-        control_pts[2,:] = p2 + np.array(
-            [radius*np.cos(angle2+np.pi), radius*np.sin(angle2+np.pi)])
+
+        # Compute baseline intermediate control pts ctrl_p1 and ctrl_p2
+        ctrl_p1_base = radius1*delta1
+        ctrl_p2_base =-radius2*delta2
+
+        ctrl_p1_edgy = delta_b1
+        ctrl_p2_edgy = delta_b2
+
+        control_pts[1,:] = p1 + edgy1*ctrl_p1_base + (1.0-edgy1)*ctrl_p1_edgy
+        control_pts[2,:] = p2 + edgy2*ctrl_p2_base + (1.0-edgy2)*ctrl_p2_edgy
 
         # Compute points on the Bezier curve
         curve = sample_bezier_curve(control_pts, n_sampling_pts)
