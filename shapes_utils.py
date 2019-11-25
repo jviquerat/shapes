@@ -145,9 +145,10 @@ class Shape:
 
             # Compute radii
             dist         = compute_distance(pt_m, pt_p)
-            radii[crt,0] = 0.707*dist*radius[crt]
-            dist        = compute_distance(pt_c, pt_p)
-            radii[crt,1] = 0.707*dist*radius[crt]
+            #dist         = compute_distance(pt_m, pt_c)
+            radii[crt,0] = 0.5*dist*radius[crt]
+            #dist        = compute_distance(pt_c, pt_p)
+            radii[crt,1] = 0.5*dist*radius[crt]
 
         # Generate curves
         for i in range(self.n_control_pts):
@@ -630,8 +631,8 @@ def generate_bezier_curve(p1,       p2,
         ctrl_p1_edgy = delta_b1
         ctrl_p2_edgy = delta_b2
 
-        control_pts[1,:] = p1 + edgy1*ctrl_p1_base + (1.0-edgy1)*ctrl_p1_edgy
-        control_pts[2,:] = p2 + edgy2*ctrl_p2_base + (1.0-edgy2)*ctrl_p2_edgy
+        control_pts[1,:] = p1 + edgy1*ctrl_p1_base# + (1.0-edgy1)*ctrl_p1_edgy
+        control_pts[2,:] = p2 + edgy2*ctrl_p2_base# + (1.0-edgy2)*ctrl_p2_edgy
 
         # Compute points on the Bezier curve
         curve = sample_bezier_curve(control_pts, n_sampling_pts)
