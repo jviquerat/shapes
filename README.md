@@ -18,7 +18,7 @@ Tools to generate random shapes using Bezier curves (images and meshes), control
 0.16784876294630274 0.3349169666644063 0.5 1.0
 ```
 
-<img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552201-598ec680-0f9e-11ea-941d-747dda258a97.png"> <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552144-3d8b2500-0f9e-11ea-91e2-03dd8127c7d4.png">
+<img width="434" alt="" src="https://user-images.githubusercontent.com/44053700/69552201-598ec680-0f9e-11ea-941d-747dda258a97.png"> <img width="434" alt="" src="https://user-images.githubusercontent.com/44053700/69552144-3d8b2500-0f9e-11ea-91e2-03dd8127c7d4.png">
 
 ## Shape generated from file
 
@@ -30,4 +30,4 @@ Tools to generate random shapes using Bezier curves (images and meshes), control
 -0.5 0.4 0.5 1.0
 ```
 
-<img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552480-d0c45a80-0f9e-11ea-90b4-811aafc39dcd.png"> <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552712-357fb500-0f9f-11ea-8008-2277b9cd6a60.png">
+<img width="434" alt="" src="https://user-images.githubusercontent.com/44053700/69552480-d0c45a80-0f9e-11ea-90b4-811aafc39dcd.png"> <img width="434" alt="" src="https://user-images.githubusercontent.com/44053700/69552712-357fb500-0f9f-11ea-8008-2277b9cd6a60.png">
