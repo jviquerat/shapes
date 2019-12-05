@@ -10,7 +10,7 @@ Tools to generate random shapes using Bezier curves (images and meshes), control
 
 ## Citation
 
-This work was elaborated on the basis of this StackOverflow answer: https://stackoverflow.com/a/50751932/3237302
+This work was elaborated on the basis of this StackOverflow answer: https://stackoverflow.com/a/50751932/3237302, although there are now significant differences in behavior.
 This work was originally intended for this paper: https://arxiv.org/abs/1910.13532. If you make use of this repo for your research, please consider citing it.
 
 ## Issues
