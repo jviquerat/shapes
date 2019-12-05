@@ -2,6 +2,22 @@
 
 Tools to generate random shapes using Bezier curves (images and meshes), controlling the number of points and the local curvature. It is also possible to generate shapes by joining specified points using an in-house csv format.
 
+## CSV format
+
+```
+n_pts n_splg_pts
+x1 y1 r1 e1
+x2 y2 r2 e2
+...
+xn yn rn en
+```
+
+- ```n_ctrl_pts``` is the actual number of points you control on the shape. Each such point is joined with the next one using a cubic Bezier curve
+- ```n_splg_pts``` is the number of sampling points between two control points
+- ```xi yi``` are the coordinates of the control points
+- ```ri``` is the local radius around control point ```i```. It measures how far the local control points are from the point you provided
+- ```ei``` is a local measure of sharpness
+
 ## Random shape
 
 ```
