@@ -135,7 +135,7 @@ class Shape:
             delta[crt,:] = diff
 
             # Compute edgy vector
-            delta_b[crt,:] = 0.5*(pt_m + pt_p)
+            delta_b[crt,:] = 0.5*(pt_m + pt_p) - pt_c
 
             # Compute radii
             dist         = compute_distance(pt_m, pt_p)
@@ -621,8 +621,8 @@ def generate_bezier_curve(p1,       p2,
         ctrl_p1_base = radius1*delta1
         ctrl_p2_base =-radius2*delta2
 
-        ctrl_p1_edgy = delta_b1
-        ctrl_p2_edgy = delta_b2
+        ctrl_p1_edgy = radius1*delta_b1
+        ctrl_p2_edgy = radius2*delta_b2
 
         control_pts[1,:] = p1 + edgy1*ctrl_p1_base + (1.0-edgy1)*ctrl_p1_edgy
         control_pts[2,:] = p2 + edgy2*ctrl_p2_base + (1.0-edgy2)*ctrl_p2_edgy
