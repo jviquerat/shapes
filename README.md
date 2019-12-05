@@ -20,7 +20,46 @@ xn yn rn en
 
 Give a look at the examples below for a better understanding of the effects of radius and sharpness parameters.
 
+## Shape examples
+
+The best approximation of a cylinder using 4 points:
+
+```
+4 30
+1.0 1.0 0.5587 1.0
+-1.0 1.0 0.5587 1.0
+-1.0 -1.0 0.5587 1.0
+1.0 -1.0 0.5587 1.0
+```
+
+<img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/70216021-03a8e400-173f-11ea-8a25-b2a5ee1867fa.png"> <img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/70216014-00155d00-173f-11ea-96fa-c1357e9f14ec.png">
+
+Increasing radius on top left, while decreasing it on bottom right:
+
+```
+4 30
+1.0 1.0 0.5587 1.0
+-1.0 1.0 1.0 1.0
+-1.0 -1.0 0.5587 1.0
+1.0 -1.0 0.0 1.0
+```
+
+<img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/70216167-45d22580-173f-11ea-987b-8c7f3624bc6a.png"> <img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/70216198-55ea0500-173f-11ea-803d-b5ebe7363552.png">
+
+Making a sharp edge on bottom right:
+
+```
+4 30
+1.0 1.0 0.5587 1.0
+-1.0 1.0 0.5587 1.0
+-1.0 -1.0 0.5587 1.0
+1.0 -1.0 0.5587 0.0
+```
+<img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/70215840-a4e36a80-173e-11ea-9300-30b6bd9b6299.png"> <img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/70215882-bdec1b80-173e-11ea-8a1c-a492b8a98ce3.png">
+
 ## Random shape
+
+Generated using ```python3 generate_shape_random.py```:
 
 ```
 10 10
@@ -39,6 +78,8 @@ Give a look at the examples below for a better understanding of the effects of r
 <img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/69552201-598ec680-0f9e-11ea-941d-747dda258a97.png"> <img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/69552144-3d8b2500-0f9e-11ea-91e2-03dd8127c7d4.png">
 
 ## Shape generated from file
+
+Generated using ```python3 generate_shape_from_file.py myfile.csv```:
 
 ```
 4 30
