@@ -319,14 +319,6 @@ class Shape:
         shape_h     = kwargs.get('shape_h',     1.0)
         domain_h    = kwargs.get('domain_h',    2.0)
         mesh_format = kwargs.get('mesh_format', 'mesh')
-        refine      = kwargs.get('refine',      False)
-
-        # Define refinement factors if necessary
-        if (refine):
-            yintp   = ymax/3.0
-            yintm   = ymin/3.0
-            xintp   = 9.0*xmax/10.0
-            xintm   = xmin/3.0
 
         # Convert curve to polygon
         geom      = pygmsh.built_in.Geometry()
@@ -342,26 +334,6 @@ class Shape:
                                         0.0,
                                         domain_h,
                                         holes=[poly.line_loop])
-
-            # Refine area around shape if necessary
-            if (refine):
-                p0 = geom.add_point([xintm,yintm,0.0], shape_h)
-                p1 = geom.add_point([xintm,yintp,0.0], shape_h)
-                p2 = geom.add_point([xintp,yintp,0.0], shape_h)
-                p3 = geom.add_point([xintp,yintm,0.0], shape_h)
-                l0 = geom.add_line(p0,p1)
-                l1 = geom.add_line(p1,p2)
-                l2 = geom.add_line(p2,p3)
-                l3 = geom.add_line(p3,p0)
-
-                s = 'Line{%s} In Surface{%s};' % (l0.id, border.id)
-                geom.add_raw_code(s)
-                s = 'Line{%s} In Surface{%s};' % (l1.id, border.id)
-                geom.add_raw_code(s)
-                s = 'Line{%s} In Surface{%s};' % (l2.id, border.id)
-                geom.add_raw_code(s)
-                s = 'Line{%s} In Surface{%s};' % (l3.id, border.id)
-                geom.add_raw_code(s)
 
         # Generate mesh and write in medit format
         try:
