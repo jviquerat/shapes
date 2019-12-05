@@ -4,7 +4,9 @@ Tools to generate random shapes using Bezier curves (images and meshes), control
 
 ## Requirements
 
-```gmsh``` is required for the meshing of the shapes. Simplest way is to download an executable from http://gmsh.info/ on your computer, and to add its position to your ```PATH```.
+- ```gmsh``` is required for the meshing of the shapes. Simplest way is to download an executable from http://gmsh.info/ on your computer, and to add its position to your ```PATH```
+- ```pygmsh```
+- ```meshio```
 
 ## Citation
 
