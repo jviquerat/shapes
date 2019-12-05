@@ -18,7 +18,7 @@ xn yn rn en
 - ```ri``` is the local radius around control point ```i```. It measures how far the local control points are from the point you provided
 - ```ei``` is a local measure of sharpness
 
-Give a look at the examples below for a better understanding of the effects of radius and sharpness parameters.
+Give a look at the examples below for a better understanding of the effects of radius and sharpness parameters. Maximum smoothness is usually obtained for ```r = 0.5``` and ```e = 1.0``` on all points.
 
 ## Shape examples
 
