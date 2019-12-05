@@ -1,6 +1,21 @@
 # bezier_shapes
 
-Tools to generate random shapes using Bezier curves (images and meshes), controlling the number of points and the local curvature. It is also possible to generate shapes by joining specified points using an in-house csv format.
+Tools to generate random shapes using Bezier curves (images and meshes), controlling the number of points and the local curvature and sharpness. It is also possible to generate shapes by joining specified points using an in-house csv format, and to generate full sets of random shapes with variable parameters.
+
+## Requirements
+
+```gmsh``` is required for the meshing of the shapes. Simplest way is to download an executable from http://gmsh.info/ on your computer, and to add its position to your ```PATH```.
+
+## Citation
+
+This work was elaborated on the basis of this StackOverflow answer: https://stackoverflow.com/a/50751932/3237302
+This work was originally intended for this paper: https://arxiv.org/abs/1910.13532. If you make use of this repo for your research, please consider citing it.
+
+## Issues
+
+This work is provided with no guarantee whatsoever.
+If you find something wrong, please raise an issue. However, there is no guarantee I will have time to look into it.
+PRs are welcome, but the same warning applies.
 
 ## CSV format
 
@@ -90,3 +105,9 @@ Generated using ```python3 generate_shape_from_file.py myfile.csv```:
 ```
 
 <img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/69552480-d0c45a80-0f9e-11ea-90b4-811aafc39dcd.png"> <img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/69552712-357fb500-0f9f-11ea-8008-2277b9cd6a60.png">
+
+## Generating datasets
+
+Generate a dataset of random shapes using ```python3 generate_dataset.py``` (parameters of the dataset can be modified inside the python file). It will generate images and meshes in separated folders.
+
+<img width="1014" alt="Capture d’écran 2019-12-05 à 09 44 44" src="https://user-images.githubusercontent.com/44053700/70218754-e4608580-1743-11ea-9dd4-f1520178daf8.png">
