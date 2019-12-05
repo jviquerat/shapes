@@ -18,6 +18,8 @@ xn yn rn en
 - ```ri``` is the local radius around control point ```i```. It measures how far the local control points are from the point you provided
 - ```ei``` is a local measure of sharpness
 
+Give a look at the examples below for a better understanding of the effects of radius and sharpness parameters.
+
 ## Random shape
 
 ```
