@@ -1,6 +1,6 @@
 # bezier_shapes
 
-Tools to generate random shapes using Bezier curves (images and meshes), controlling the number of points and the local curvature and sharpness. It is also possible to generate shapes by joining specified points using an in-house csv format, and to generate full sets of random shapes with variable parameters.
+This repository contains tools to generate random shapes using Bezier curves (images and meshes), controlling the number of points and the local curvature and sharpness. It is also possible to generate shapes by joining specified points using an in-house csv format, and to generate full sets of random shapes with variable parameters.
 
 <p align="center">
   <img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/70312990-0413ae80-1815-11ea-8bbd-2734fb81a668.png">
