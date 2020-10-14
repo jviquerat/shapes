@@ -322,32 +322,32 @@ class Shape:
         mesh_format = kwargs.get('mesh_format', 'mesh')
 
         # Convert curve to polygon
-        geom      = pygmsh.built_in.Geometry()
-        poly      = geom.add_polygon(self.curve_pts,
-                                     make_surface=not mesh_domain)
+        with pygmsh.geo.Geometry() as geom:
+            poly      = geom.add_polygon(self.curve_pts,
+                                         make_surface=not mesh_domain)
 
-        # Mesh domain if necessary
-        if (mesh_domain):
-            # Compute an intermediate mesh size
-            border = geom.add_rectangle(xmin, xmax,
-                                        ymin, ymax,
-                                        0.0,
-                                        domain_h,
-                                        holes=[poly.line_loop])
+            # Mesh domain if necessary
+            if (mesh_domain):
+                # Compute an intermediate mesh size
+                border = geom.add_rectangle(xmin, xmax,
+                                            ymin, ymax,
+                                            0.0,
+                                            domain_h,
+                                            holes=[poly.curve_loop])
 
-        # Generate mesh and write in medit format
-        try:
-            mesh = pygmsh.generate_mesh(geom, extra_gmsh_arguments=["-v", "0"])
-        except AssertionError:
-            print('\n'+'!!!!! Meshing failed !!!!!')
-            return False, 0
+            # Generate mesh and write in medit format
+            try:
+                mesh = geom.generate_mesh(dim=2)
+            except AssertionError:
+                print('\n'+'!!!!! Meshing failed !!!!!')
+                return False, 0
 
         # Compute data from mesh
-        n_tri = len(mesh.cells['triangle'])
+        n_tri = len(mesh.cells_dict['triangle'])
 
         # Remove vertex keywork from cells dictionnary
         # to avoid warning message from meshio
-        del mesh.cells['vertex']
+        del mesh.cells_dict['vertex']
 
         # Remove lines if output format is xml
         if (mesh_format == 'xml'): del mesh.cells['line']
