@@ -15,13 +15,11 @@ This repository contains tools to generate random shapes using Bezier curves (im
 ## Citation
 
 The work contained in this repository was developed for use in the following papers: 
-- *"A supervised neural network for drag prediction of arbitrary 2D shapes in low Reynolds number flows"* https://arxiv.org/abs/1907.05090 and https://www.sciencedirect.com/science/article/abs/pii/S0045793020302164
-- *"U-net architectures for fast prediction of incompressible laminar flows"* https://arxiv.org/abs/1910.13532
-- *"Direct shape optimization through deep reinforcement learning"* https://arxiv.org/abs/1908.09885
+- *"A supervised neural network for drag prediction of arbitrary 2D shapes in low Reynolds number flows"* <a href="https://arxiv.org/abs/1907.05090">pre-print</a>,  <a href="https://www.sciencedirect.com/science/article/abs/pii/S0045793020302164">paper</a> and <a href="https://github.com/jviquerat/cnn_drag_prediction">source code</a>
+- *"U-net architectures for fast prediction of incompressible laminar flows"* <a href="https://arxiv.org/abs/1910.13532">pre-print</a>
+- *"Direct shape optimization through deep reinforcement learning"* <a href="https://arxiv.org/abs/1908.09885">pre-print</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0021999120308548">paper</a> and <a href="https://github.com/jviquerat/drl_shape_optimization">source code</a>
 
-If you make use of this repo for your research, please consider citing them.
-
-This work was elaborated on the basis of this StackOverflow answer: https://stackoverflow.com/a/50751932/3237302, although there are now significant differences in behavior and features.
+If you make use of this repo for your research, please consider citing them. This work was elaborated on the basis of this StackOverflow answer: https://stackoverflow.com/a/50751932/3237302, although there are now significant differences in behavior and features.
 
 ## Issues
 
