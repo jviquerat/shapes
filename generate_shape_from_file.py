@@ -31,6 +31,10 @@ if (not os.path.isfile(filename)):
 # Generate shape
 shape = Shape()
 shape.read_csv(filename)
-shape.generate(ccws=True)
+shape.generate(ccws=True,
+               centering=False)
 shape.mesh()
-shape.generate_image(plot_pts=True)
+shape.generate_image(plot_pts=True,
+                     show_quadrants=True,
+                     min_radius=0.1,
+                     max_radius=0.5)

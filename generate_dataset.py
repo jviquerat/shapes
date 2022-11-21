@@ -13,15 +13,16 @@ except ImportError:
     import progress.bar
 
 # Custom imports
-from python_tools.shapes.shapes_utils import *
-from python_tools.meshes.meshes_utils import *
+from shapes_utils import *
+from meshes_utils import *
 
 ### ************************************************
 ### Generate full dataset
 # Parameters
-n_sampling_pts = 5
+n_sampling_pts = 50
 mesh_domain    = False
 plot_pts       = True
+show_quadrants = True
 n_shapes       = 200
 time           = datetime.now().strftime('%Y-%m-%d_%H_%M_%S')
 dataset_dir    = 'dataset_'+time+'/'
@@ -48,13 +49,18 @@ for i in range(0,n_shapes):
     generated = False
     while (not generated):
 
-        n_pts  = random.randint(3, 7)
+        #n_pts  = random.randint(3, 7)
+        n_pts = 4
         radius = np.random.uniform(0.0, 1.0, size=n_pts)
         edgy   = np.random.uniform(0.0, 1.0, size=n_pts)
         shape  = Shape(filename+'_'+str(i),
-                       None,n_pts,n_sampling_pts,radius,edgy)
+                       None,
+                       n_pts,
+                       n_sampling_pts,
+                       radius,
+                       edgy)
 
-        shape.generate(magnify=2.0,
+        shape.generate(magnify=1.0,
                        xmin=xmin,
                        xmax=xmax,
                        ymin=ymin,
@@ -66,7 +72,8 @@ for i in range(0,n_shapes):
                                  xmin=xmin,
                                  xmax=xmax,
                                  ymin=ymin,
-                                 ymax=ymax)
+                                 ymax=ymax,
+                                 show_quadrants=True)
             img  = filename+'_'+str(i)+'.png'
             mesh = filename+'_'+str(i)+'.mesh'
             shutil.move(img,  img_dir)

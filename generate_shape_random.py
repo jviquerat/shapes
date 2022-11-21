@@ -4,16 +4,16 @@ from shapes_utils import *
 ### ************************************************
 ### Generate a random shape from given inputs
 filename       = 'shape'
-n_pts          = 6
+n_pts          = 4
 n_sampling_pts = 50
 plot_pts       = True
-mesh_domain    = True
+mesh_domain    = False
 magnify        = 1.0
 domain_h       = 0.2
-xmin           =-1.0
-xmax           = 1.0
-ymin           =-1.0
-ymax           = 1.0
+xmin           =-2.0
+xmax           = 5.0
+ymin           =-2.0
+ymax           = 2.0
 
 # To generate shapes with homogeneous curvatures
 radius         = [0.5]
@@ -41,5 +41,6 @@ shape.generate_image(plot_pts = plot_pts,
                      xmin     = xmin,
                      xmax     = xmax,
                      ymin     = ymin,
-                     ymax     = ymax)
+                     ymax     = ymax,
+                     show_quadrants = True)
 shape.write_csv()
