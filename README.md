@@ -64,7 +64,7 @@ Give a look at the examples below for a better understanding of the effects of r
 1.0 -1.0 0.707 0.0
 ```
 </td>
-<td> <p align="center"> <img align="center" width="300" src="csv/cylinder.png"> </p>
+<td> <p align="center"> <img align="center" width="250" src="csv/cylinder.png"> </p>
 </td>
 </tr>
 <tr>
@@ -78,7 +78,7 @@ Give a look at the examples below for a better understanding of the effects of r
 1.0 -1.0 0.0 0.0
 ```
 </td>
-<td> <p align="center"> <img align="center" width="300" src="csv/pointy.png"> </p>
+<td> <p align="center"> <img align="center" width="250" src="csv/pointy.png"> </p>
 </td>
 </tr>
 <tr>
@@ -92,7 +92,41 @@ Give a look at the examples below for a better understanding of the effects of r
 1.0 -1.0 0.707 1.0
 ```
 </td>
-<td> <p align="center"> <img align="center" width="300" src="csv/palm.png"> </p>
+<td> <p align="center"> <img align="center" width="250" src="csv/palm.png"> </p>
+</td>
+</tr>
+<tr>
+<td>
+
+```
+4 30
+-1.0 0.0 0.5 0.0
+0.0 0.1 0.7 0.0
+1.0 0.0 0.5 0.0
+-0.5 0.4 0.7 0.0
+```
+</td>
+<td> <p align="center"> <img align="center" width="250" src="csv/naca.png"> </p>
+</td>
+</tr>
+<tr>
+<td>
+
+```
+10 30
+-0.22344386973718572 -0.11579347020968898 0.5 0.0
+-1.086703349116176 0.056471511909076864 0.5 0.0
+0.33918645130375696 -0.6285322803621614 0.5 0.0
+0.09673486000147186 0.020665843303720587 0.5 0.0
+0.7184144807034846 0.07933772977561572 0.5 0.0
+0.658776975915066 -0.5602669680651731 0.5 0.0
+-0.5629917814532847 0.37355108023884465 0.5 0.0
+-0.5526944074292542 0.6349363861837116 0.5 0.0
+0.44487187686581814 -0.19528679943835178 0.5 0.0
+0.16784876294630274 0.3349169666644063 0.5 0.0
+```
+</td>
+<td> <p align="center"> <img align="center" width="250" src="csv/random.png"> </p>
 </td>
 </tr>
 </table>
