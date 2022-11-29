@@ -5,19 +5,12 @@ import PIL
 import math
 import scipy.special
 import matplotlib
+import pygmsh, meshio
 import numpy             as np
 import matplotlib.pyplot as plt
 
-# Imports with probable installation required
-try:
-    import pygmsh, meshio
-except ImportError:
-    print('*** Missing required packages, I will install them for you ***')
-    os.system('pip3 install pygmsh meshio')
-    import pygmsh, meshio
-
 # Custom imports
-from meshes_utils import *
+from meshes import *
 
 ### ************************************************
 ### Class defining shape object
@@ -130,8 +123,7 @@ class Shape:
 
             # Compute delta vector
             diff         = pt_p - pt_m
-            diff         = diff/np.linalg.norm(diff)
-            delta[crt,:] = diff
+            delta[crt,:] = diff/np.linalg.norm(diff)
 
             # Compute edgy vector
             delta_b[crt,:] = 0.5*(pt_m + pt_p) - pt_c
@@ -214,9 +206,9 @@ class Shape:
             plt.scatter(self.control_pts[:,0],
                         self.control_pts[:,1],
                         color=colors,
-                        s=16,
+                        s=50,
                         zorder=2,
-                        alpha=0.5)
+                        alpha=1.0)
 
         # Plot quadrants
         if (show_quadrants):
@@ -241,8 +233,10 @@ class Shape:
         filename = self.name+'_'+str(self.index)+'.png'
         if (override_name != ''): filename = override_name
 
+        plt.gcf().tight_layout()
         plt.savefig(filename,
-                    dpi=400)
+                    dpi=400,
+                    bbox_inches='tight')
         plt.close(plt.gcf())
         plt.cla()
         trim_white(filename)
@@ -577,9 +571,6 @@ def generate_bezier_curve(p1,       p2,
                           edgy1,    edgy2,
                           n_sampling_pts):
 
-    # Lambda function to wrap angles
-    #wrap = lambda angle: (angle >= 0.0)*angle + (angle < 0.0)*(angle+2*np.pi)
-
     # Sample the curve if necessary
     if (n_sampling_pts != 0):
         # Create array of control pts for cubic Bezier curve
@@ -593,11 +584,11 @@ def generate_bezier_curve(p1,       p2,
         ctrl_p1_base = radius1*delta1
         ctrl_p2_base =-radius2*delta2
 
-        ctrl_p1_edgy = radius1*delta_b1
-        ctrl_p2_edgy = radius2*delta_b2
+        ctrl_p1_edgy = delta_b1
+        ctrl_p2_edgy = delta_b2
 
-        control_pts[1,:] = p1 + edgy1*ctrl_p1_base + (1.0-edgy1)*ctrl_p1_edgy
-        control_pts[2,:] = p2 + edgy2*ctrl_p2_base + (1.0-edgy2)*ctrl_p2_edgy
+        control_pts[1,:] = p1 + ctrl_p1_base + edgy1*ctrl_p1_edgy
+        control_pts[2,:] = p2 + ctrl_p2_base + edgy2*ctrl_p2_edgy
 
         # Compute points on the Bezier curve
         curve = sample_bezier_curve(control_pts, n_sampling_pts)

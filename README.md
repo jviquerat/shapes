@@ -1,20 +1,15 @@
-# bezier_shapes
+# bshapes
+
+<p align="center">
+  <img align="right" width="350" alt="logo" src="csv/palm.png">
+</p>
 
 This repository contains tools to generate random shapes using Bezier curves (images and meshes), controlling the number of points and the local curvature and sharpness. It is also possible to generate shapes by joining specified points using an in-house csv format, and to generate full sets of random shapes with variable parameters.
 
-<p align="center">
-  <img width="430" alt="" src="https://user-images.githubusercontent.com/44053700/70312990-0413ae80-1815-11ea-8bbd-2734fb81a668.png">
-</p>
-
-## Requirements
-
-- ```gmsh``` is required for the meshing of the shapes. Simplest way is to download an executable from http://gmsh.info/ on your computer, and to add its position to your ```PATH```
-- ```pygmsh```
-- ```meshio```
-
 ## Citation
 
-The work contained in this repository was developed for use in the following papers: 
+The work contained in this repository was developed for use in the following papers:
+
 - *"A supervised neural network for drag prediction of arbitrary 2D shapes in low Reynolds number flows"* <a href="https://arxiv.org/abs/1907.05090">pre-print</a>,  <a href="https://www.sciencedirect.com/science/article/abs/pii/S0045793020302164">paper</a> and <a href="https://github.com/jviquerat/cnn_drag_prediction">source code</a>
 - *"U-net architectures for fast prediction of incompressible laminar flows"* <a href="https://arxiv.org/abs/1910.13532">pre-print</a>
 - *"Direct shape optimization through deep reinforcement learning"* <a href="https://arxiv.org/abs/1908.09885">pre-print</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0021999120308548">paper</a> and <a href="https://github.com/jviquerat/drl_shape_optimization">source code</a>
@@ -43,97 +38,92 @@ xn yn rn en
 - ```ri``` is the local radius around control point ```i```. It measures how far the local control points are from the point you provided
 - ```ei``` is a local measure of sharpness
 
-Give a look at the examples below for a better understanding of the effects of radius and sharpness parameters. Maximum smoothness is usually obtained for ```r = 0.5``` and ```e = 1.0``` on all points.
+Give a look at the examples below for a better understanding of the effects of radius and sharpness parameters. Maximum smoothness is usually obtained for ```r = 0.5``` and ```e = 0.0``` on all points.
 
 ## Shape examples
 
-The best approximation of a cylinder using 4 points:
+<table>
+<tr>
+<td> csv </td> <td> shape </td>
+</tr>
+<tr>
+<td>
 
 ```
 4 30
-1.0 1.0 0.5587 1.0
--1.0 1.0 0.5587 1.0
--1.0 -1.0 0.5587 1.0
-1.0 -1.0 0.5587 1.0
+1.0 1.0 0.707 0.0
+-1.0 1.0 0.707 0.0
+-1.0 -1.0 0.707 0.0
+1.0 -1.0 0.707 0.0
 ```
-
-<p align="center">
-  <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/70216021-03a8e400-173f-11ea-8a25-b2a5ee1867fa.png">
-  <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/70216014-00155d00-173f-11ea-96fa-c1357e9f14ec.png">
-</p>
-
-Increasing radius on top left, while decreasing it on bottom right:
-
-```
-4 30
-1.0 1.0 0.5587 1.0
--1.0 1.0 1.0 1.0
--1.0 -1.0 0.5587 1.0
-1.0 -1.0 0.0 1.0
-```
-
-<p align="center">
-  <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/70216167-45d22580-173f-11ea-987b-8c7f3624bc6a.png"> 
-  <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/70216198-55ea0500-173f-11ea-803d-b5ebe7363552.png">
-</p>
-
-Making a sharp edge on bottom right:
+</td>
+<td> <p align="center"> <img align="center" width="250" src="csv/cylinder.png"> </p>
+</td>
+</tr>
+<tr>
+<td>
 
 ```
 4 30
-1.0 1.0 0.5587 1.0
--1.0 1.0 0.5587 1.0
--1.0 -1.0 0.5587 1.0
-1.0 -1.0 0.5587 0.0
+1.0 1.0 0.707 0.0
+-1.0 1.0 1.0 0.0
+-1.0 -1.0 0.707 0.0
+1.0 -1.0 0.0 0.0
 ```
-
-<p align="center">
-  <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/70215840-a4e36a80-173e-11ea-9300-30b6bd9b6299.png"> 
-  <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/70215882-bdec1b80-173e-11ea-8a1c-a492b8a98ce3.png">
-</p>
-
-## Random shape
-
-Generated using ```python3 generate_shape_random.py```:
-
-```
-10 10
--0.22344386973718572 -0.11579347020968898 0.5 1.0
--1.086703349116176 0.056471511909076864 0.5 1.0
-0.33918645130375696 -0.6285322803621614 0.5 1.0
-0.09673486000147186 0.020665843303720587 0.5 1.0
-0.7184144807034846 0.07933772977561572 0.5 1.0
-0.658776975915066 -0.5602669680651731 0.5 1.0
--0.5629917814532847 0.37355108023884465 0.5 1.0
--0.5526944074292542 0.6349363861837116 0.5 1.0
-0.44487187686581814 -0.19528679943835178 0.5 1.0
-0.16784876294630274 0.3349169666644063 0.5 1.0
-```
-
-<p align="center">
-  <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552201-598ec680-0f9e-11ea-941d-747dda258a97.png"> 
-  <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552144-3d8b2500-0f9e-11ea-91e2-03dd8127c7d4.png">
-</p>
-
-## Shape generated from file
-
-Generated using ```python3 generate_shape_from_file.py myfile.csv```:
+</td>
+<td> <p align="center"> <img align="center" width="250" src="csv/pointy.png"> </p>
+</td>
+</tr>
+<tr>
+<td>
 
 ```
 4 30
--1.0 0.0 0.5 1.0
-0.0 0.1 0.5 1.0
-1.0 0.0 0.5 1.0
--0.5 0.4 0.5 1.0
+1.0 1.0 0.707 0.0
+-1.0 1.0 0.707 0.0
+-1.0 -1.0 0.707 0.0
+1.0 -1.0 0.707 1.0
 ```
+</td>
+<td> <p align="center"> <img align="center" width="250" src="csv/palm.png"> </p>
+</td>
+</tr>
+<tr>
+<td>
 
-<p align="center">
-  <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552480-d0c45a80-0f9e-11ea-90b4-811aafc39dcd.png"> 
-  <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/69552712-357fb500-0f9f-11ea-8008-2277b9cd6a60.png">
-</p>
+```
+4 30
+-1.0 0.0 0.5 0.0
+0.0 0.1 0.7 0.0
+1.0 0.0 0.5 0.0
+-0.5 0.4 0.7 0.0
+```
+</td>
+<td> <p align="center"> <img align="center" width="250" src="csv/naca.png"> </p>
+</td>
+</tr>
+<tr>
+<td>
+
+```
+10 30
+-0.22344386973718572 -0.11579347020968898 0.5 0.0
+-1.086703349116176 0.056471511909076864 0.5 0.0
+0.33918645130375696 -0.6285322803621614 0.5 0.0
+0.09673486000147186 0.020665843303720587 0.5 0.0
+0.7184144807034846 0.07933772977561572 0.5 0.0
+0.658776975915066 -0.5602669680651731 0.5 0.0
+-0.5629917814532847 0.37355108023884465 0.5 0.0
+-0.5526944074292542 0.6349363861837116 0.5 0.0
+0.44487187686581814 -0.19528679943835178 0.5 0.0
+0.16784876294630274 0.3349169666644063 0.5 0.0
+```
+</td>
+<td> <p align="center"> <img align="center" width="250" src="csv/random.png"> </p>
+</td>
+</tr>
+</table>
 
 ## Generating datasets
 
-Generate a dataset of random shapes using ```python3 generate_dataset.py``` (parameters of the dataset can be modified inside the python file). It will generate images and meshes in separated folders.
-
-<img width="1014" alt="Capture d’écran 2019-12-05 à 09 44 44" src="https://user-images.githubusercontent.com/44053700/70218754-e4608580-1743-11ea-9dd4-f1520178daf8.png">
+Generate a dataset of random shapes using ```python3 dataset.py``` (parameters of the dataset can be modified inside the python file). It will generate images and meshes in separated folders.

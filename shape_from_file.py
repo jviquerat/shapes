@@ -1,17 +1,10 @@
 # Generic imports
 import os
 import sys
-
-# Imports with probable installation required
-try:
-    import pygmsh, meshio
-except ImportError:
-    print('*** Missing required packages, I will install them for you ***')
-    os.system('pip3 install pygmsh meshio')
-    import pygmsh, meshio
+import pygmsh, meshio
 
 # Custom imports
-from shapes_utils import *
+from shapes import *
 
 ### ************************************************
 ### Generate a shape from in-house csv format
@@ -31,6 +24,10 @@ if (not os.path.isfile(filename)):
 # Generate shape
 shape = Shape()
 shape.read_csv(filename)
-shape.generate(ccws=True)
+shape.generate(ccws=True,
+               centering=True)
 shape.mesh()
-shape.generate_image(plot_pts=True)
+shape.generate_image(plot_pts=True,
+                     show_quadrants=False,
+                     xmin=-2.0, xmax=2.0,
+                     ymin=-2.0, ymax=2.0)
