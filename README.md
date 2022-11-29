@@ -15,9 +15,9 @@ This repository contains tools to generate random shapes using Bezier curves (im
 ## Citation
 
 The work contained in this repository was developed for use in the following papers: 
-- *"A supervised neural network for drag prediction of arbitrary 2D shapes in low Reynolds number flows"* https://arxiv.org/abs/1907.05090 and https://www.sciencedirect.com/science/article/abs/pii/S0045793020302164
-- *"U-net architectures for fast prediction of incompressible laminar flows"* https://arxiv.org/abs/1910.13532
-- *"Direct shape optimization through deep reinforcement learning"* https://arxiv.org/abs/1908.09885
+- *"A supervised neural network for drag prediction of arbitrary 2D shapes in low Reynolds number flows"* <a href="https://arxiv.org/abs/1907.05090">here</a> and <a href="https://www.sciencedirect.com/science/article/abs/pii/S0045793020302164">here</a>
+- *"U-net architectures for fast prediction of incompressible laminar flows"* <a href="https://arxiv.org/abs/1910.13532">here</a>
+- *"Direct shape optimization through deep reinforcement learning"* <a href="https://arxiv.org/abs/1908.09885">here</a> and <a href="https://www.sciencedirect.com/science/article/pii/S0021999120308548">here</a>
 
 If you make use of this repo for your research, please consider citing them.
 
