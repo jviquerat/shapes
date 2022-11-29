@@ -70,7 +70,7 @@ Give a look at the examples below for a better understanding of the effects of r
 <td> 
 
 <p align="center">  
-    <img align="right" width="100" src="csv/cylinder.png"> 
+    <img align="center" width="100" src="csv/cylinder.png"> 
 </p> 
 </td>
 </tr>
