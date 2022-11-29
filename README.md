@@ -6,12 +6,6 @@
 
 This repository contains tools to generate random shapes using Bezier curves (images and meshes), controlling the number of points and the local curvature and sharpness. It is also possible to generate shapes by joining specified points using an in-house csv format, and to generate full sets of random shapes with variable parameters.
 
-## Requirements
-
-- ```gmsh``` is required for the meshing of the shapes. Simplest way is to download an executable from http://gmsh.info/ on your computer, and to add its position to your ```PATH```
-- ```pygmsh```
-- ```meshio```
-
 ## Citation
 
 The work contained in this repository was developed for use in the following papers: 
