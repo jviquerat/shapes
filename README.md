@@ -49,8 +49,8 @@ Give a look at the examples below for a better understanding of the effects of r
 
 ## Shape examples
 
-| csv  | shape |
-| :--- | :--- |
+<!-- | csv  | shape | -->
+<!-- | :--- | :--- | -->
 | ```
 4 30
 1.0 1.0 0.5587 1.0
