@@ -51,7 +51,7 @@ Give a look at the examples below for a better understanding of the effects of r
 
 <table>
 <tr>
-<td> csv </td> <td> shape </td>
+<td> `csv` </td> <td> `shape` </td>
 </tr>
 <tr>
 <td>
@@ -79,6 +79,20 @@ Give a look at the examples below for a better understanding of the effects of r
 ```
 </td>
 <td> <p align="center"> <img align="center" width="300" src="csv/pointy.png"> </p>
+</td>
+</tr>
+<tr>
+<td>
+
+```
+4 30
+1.0 1.0 0.707 0.0
+-1.0 1.0 0.707 0.0
+-1.0 -1.0 0.707 0.0
+1.0 -1.0 0.707 1.0
+```
+</td>
+<td> <p align="center"> <img align="center" width="300" src="csv/palm.png"> </p>
 </td>
 </tr>
 </table>
