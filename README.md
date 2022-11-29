@@ -1,5 +1,9 @@
 # bshapes
 
+<p align="center">
+  <img align="right" width="350" alt="logo" src="csv/palm.png">
+</p>
+
 This repository contains tools to generate random shapes using Bezier curves (images and meshes), controlling the number of points and the local curvature and sharpness. It is also possible to generate shapes by joining specified points using an in-house csv format, and to generate full sets of random shapes with variable parameters.
 
 <p align="center">
