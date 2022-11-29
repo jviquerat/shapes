@@ -58,16 +58,32 @@ Give a look at the examples below for a better understanding of the effects of r
 
 ```
 4 30
-1.0 1.0 0.5587 1.0
--1.0 1.0 0.5587 1.0
--1.0 -1.0 0.5587 1.0
-1.0 -1.0 0.5587 1.0
+1.0 1.0 0.707 0.0
+-1.0 1.0 0.707 0.0
+-1.0 -1.0 0.707 0.0
+1.0 -1.0 0.707 0.0
 ```
 </td>
 <td> <p align="center"> <img align="center" width="300" src="csv/cylinder.png"> </p>
 </td>
 </tr>
+<tr>
+<td>
+
+```
+4 30
+1.0 1.0 0.707 0.0
+-1.0 1.0 1.0 0.0
+-1.0 -1.0 0.707 0.0
+1.0 -1.0 0.0 0.0
+```
+</td>
+<td> <p align="center"> <img align="center" width="300" src="csv/pointy.png"> </p>
+</td>
+</tr>
 </table>
+
+
 <!-- <p align="center"> -->
 <!--   <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/70216021-03a8e400-173f-11ea-8a25-b2a5ee1867fa.png"> -->
 <!--   <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/70216014-00155d00-173f-11ea-96fa-c1357e9f14ec.png"> -->
