@@ -51,12 +51,21 @@ Give a look at the examples below for a better understanding of the effects of r
 
 <!-- | csv  | shape | -->
 <!-- | :--- | :--- | -->
-| ```
+
+<table>
+<tr>
+<td> csv </td> <td> shape </td>
+</tr>
+<tr>
+<td> ```
 4 30
 1.0 1.0 0.5587 1.0
 -1.0 1.0 0.5587 1.0
 -1.0 -1.0 0.5587 1.0
-1.0 -1.0 0.5587 1.0 ``` | <img align="right" width="100" src="csv/cylinder.png"> |
+1.0 -1.0 0.5587 1.0
+```
+</td> <td> <img align="right" width="100" src="csv/cylinder.png"> </td>
+</tr>
 
 <!-- <p align="center"> -->
 <!--   <img width="400" alt="" src="https://user-images.githubusercontent.com/44053700/70216021-03a8e400-173f-11ea-8a25-b2a5ee1867fa.png"> -->
