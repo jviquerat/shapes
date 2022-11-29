@@ -43,7 +43,7 @@ Give a look at the examples below for a better understanding of the effects of r
 
 <table>
 <tr>
-<td> ```csv``` </td> <td> ```shape``` </td>
+<td> **csv** </td> <td> **shape** </td>
 </tr>
 <tr>
 <td>
