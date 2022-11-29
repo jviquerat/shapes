@@ -21,7 +21,7 @@ The work contained in this repository was developed for use in the following pap
 
 If you make use of this repo for your research, please consider citing them.
 
-This work was elaborated on the basis of this StackOverflow answer: https://stackoverflow.com/a/50751932/3237302, although there are now significant differences in behavior and features.
+This work was elaborated on the basis of <a href="https://stackoverflow.com/a/50751932/3237302">this StackOverflow answer</a>, although there are now significant differences in behavior and features.
 
 ## Issues
 
