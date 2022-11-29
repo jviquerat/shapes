@@ -49,15 +49,12 @@ Give a look at the examples below for a better understanding of the effects of r
 
 ## Shape examples
 
-<!-- | csv  | shape | -->
-<!-- | :--- | :--- | -->
-
 <table>
 <tr>
 <td> csv </td> <td> shape </td>
 </tr>
 <tr>
-<td> 
+<td>
 
 ```
 4 30
