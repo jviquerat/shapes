@@ -66,7 +66,7 @@ Give a look at the examples below for a better understanding of the effects of r
 -1.0 -1.0 0.5587 1.0
 1.0 -1.0 0.5587 1.0
 ```
-</td> <td> <img align="right" width="100" src="csv/cylinder.png"> </td>
+</td> <td> <p align="center">  <img align="right" width="100" src="csv/cylinder.png"> </p> </td>
 </tr>
 </table>
 <!-- <p align="center"> -->
