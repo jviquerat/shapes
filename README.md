@@ -1,4 +1,4 @@
-# bshapes
+# shapes
 
 <p align="center">
   <img align="right" width="350" alt="logo" src="csv/palm.png">
