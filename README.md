@@ -4,23 +4,33 @@
   <img align="right" width="350" alt="logo" src="csv/palm.png">
 </p>
 
-This repository contains tools to generate random shapes using Bezier curves (images and meshes), controlling the number of points and the local curvature and sharpness. It is also possible to generate shapes by joining specified points using an in-house csv format, and to generate full sets of random shapes with variable parameters.
+This repository contains tools to generate random shapes using Bezier curves (images and meshes), controlling the number of points and the local curvature and sharpness. It is also possible to generate shapes by joining specified points using an in-house csv format, and to generate full sets of random shapes with variable parameters. It was elaborated on the basis of this StackOverflow answer: https://stackoverflow.com/a/50751932/3237302, although there are now significant differences in behavior and features. It was used, directly or indirectly, in the following references:
 
-## Citation
+```
+A supervised neural network for drag prediction of arbitrary 2D shapes in laminar flows at low Reynolds number
+J. Viquerat, E. Hachem
+Computers & Fluids, vol. 210, num. 104645, 2020
+```
 
-The work contained in this repository was developed for use in the following papers:
+```
+A twin-decoder structure for incompressible laminar flow reconstruction with uncertainty estimation around 2D obstacles
+J. Chen, J. Viquerat, F. Heymes, E. Hachem
+Neural Computing and Applications, vol. 34, iss. 8, 2022
+```
 
-- *"A supervised neural network for drag prediction of arbitrary 2D shapes in low Reynolds number flows"* <a href="https://arxiv.org/abs/1907.05090">pre-print</a>,  <a href="https://www.sciencedirect.com/science/article/abs/pii/S0045793020302164">paper</a> and <a href="https://github.com/jviquerat/cnn_drag_prediction">source code</a>
-- *"U-net architectures for fast prediction of incompressible laminar flows"* <a href="https://arxiv.org/abs/1910.13532">pre-print</a>
-- *"Direct shape optimization through deep reinforcement learning"* <a href="https://arxiv.org/abs/1908.09885">pre-print</a>, <a href="https://www.sciencedirect.com/science/article/pii/S0021999120308548">paper</a> and <a href="https://github.com/jviquerat/drl_shape_optimization">source code</a>
+```
+Direct shape optimization through deep reinforcement learning
+J. Viquerat, J. Rabault, A. Kuhnle, H. Ghraieb, A. Larcher, E. Hachem
+Journal of Computational Physics, vol. 34, iss. 8, 2022
+```
 
-If you make use of this repo for your research, please consider citing them. This work was elaborated on the basis of this StackOverflow answer: https://stackoverflow.com/a/50751932/3237302, although there are now significant differences in behavior and features.
+```
+Graph neural networks for laminar flow prediction around random two-dimensional shapes
+J. Chen, E. Hachem, J. Viquerat
+Physics of Fluids, vol. 33, iss. 12, 2021
+```
 
-## Issues
-
-This work is provided with no guarantee whatsoever.
-If you find something wrong, please raise an issue. However, there is no guarantee I will have time to look into it.
-PRs are welcome, but the same warning applies.
+If you make use of this repo for your research, please consider citing one of these.
 
 ## CSV format
 
